@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="holidayname"> </div>
+    <div id="holidaytype"> </div>
+    <div id="countrycode"> </div>
+
+
+
+
+
+    <script>
+        let holidaynameRef = document.getElementById("holidayName");
+        let holidayTypeRef = documnent.getElementById("holidaytype");
+        let countryCodeRef = document.getElementById("countrycode");
+
+
+
+        function getHolidayData() {
+            fetch("https://date.nager.at/api/v2/publicholidays/2020/US")
+                .then((response) => {
+                    return response.json;
+                })
+                .then((data) => {
+                    console.log(data);
+                    holidayTypeRef.innerHTML = data.localName;
+                    holidayTypeRef.innerHTML = data.type;
+                    countryCodeRef.innerHTML = data.countryCode;
+
+
+
+
+                })
+                .catch((err) => {
+                    console.log(err);
+
+                })
+
+        }
+        getHolidayData();
+
+
+    </script>
+</body>
+
+</html>
